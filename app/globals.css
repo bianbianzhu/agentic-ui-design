@@ -33,35 +33,6 @@
   animation: scroll 8s linear infinite;
 }
 
-@keyframes bounce-ball {
-  0%, 100% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  25% {
-    transform: translateY(-82.5px);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-  50% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-}
-
-.animate-bounce-ball {
-  animation: bounce-ball 2.4s ease-in-out infinite;
-}
-
-.animate-bounce-ball-delay-1 {
-  animation: bounce-ball 2.4s ease-in-out infinite;
-  animation-delay: 0.6s;
-}
-
-.animate-bounce-ball-delay-2 {
-  animation: bounce-ball 2.4s ease-in-out infinite;
-  animation-delay: 1.2s;
-}
-
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

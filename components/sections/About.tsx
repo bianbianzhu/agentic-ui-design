@@ -4,10 +4,10 @@ export default function About() {
       <div className="max-w-[1700px] mx-auto">
         <div className="flex flex-wrap lg:flex-nowrap gap-12 mb-16 overflow-x-auto pb-8 justify-between">
           {/* Brand Colors */}
-          <div className="flex gap-6 shrink-0 items-end">
-            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-blue-600 to-blue-400 shrink-0 animate-bounce-ball"></div>
-            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-purple-600 to-purple-400 shrink-0 animate-bounce-ball-delay-1"></div>
-            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-black to-gray-700 shrink-0 animate-bounce-ball-delay-2"></div>
+          <div className="flex gap-6 shrink-0">
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-blue-600 to-blue-400 shrink-0"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-purple-600 to-purple-400 shrink-0"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-black to-gray-700 shrink-0"></div>
           </div>
 
           {/* Resources */}
