@@ -2,9 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 
-export function useAutoScrollToCenter() {
-  const ref = useRef<HTMLElement>(null);
+export function useAutoScrollToCenter<T extends HTMLElement = HTMLElement>(options?: { block?: 'start' | 'center' | 'end' }) {
+  const ref = useRef<T>(null);
   const hasScrolledRef = useRef(false);
+  const block = options?.block || 'center';
 
   useEffect(() => {
     const element = ref.current;
@@ -17,12 +18,24 @@ export function useAutoScrollToCenter() {
           if (entry.isIntersecting && entry.boundingClientRect.top < window.innerHeight && !hasScrolledRef.current) {
             hasScrolledRef.current = true;
 
-            // Smooth scroll to center the section
+            // Smooth scroll to the specified position
             setTimeout(() => {
-              element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-              });
+              if (block === 'start') {
+                // Scroll to top with header offset
+                const headerHeight = 88; // Header height in pixels
+                const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerHeight;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              } else {
+                element.scrollIntoView({
+                  behavior: 'smooth',
+                  block: block,
+                });
+              }
             }, 100);
 
             // Reset after animation completes
@@ -41,7 +54,7 @@ export function useAutoScrollToCenter() {
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, []);
+  }, [block]);
 
   return ref;
 }

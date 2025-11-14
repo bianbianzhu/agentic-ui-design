@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useAutoScrollToCenter } from "@/hooks/useAutoScrollToCenter";
 
 function AnimatedNumber({
   end,
@@ -56,10 +55,8 @@ function AnimatedNumber({
 }
 
 export default function About() {
-  const sectionRef = useAutoScrollToCenter();
-
   return (
-    <section ref={sectionRef} className="px-[3.3vw] py-24" id="about">
+    <section className="px-[3.3vw] py-24" id="about">
       <div className="max-w-[1700px] mx-auto">
         <div className="flex flex-wrap lg:flex-nowrap gap-12 mb-16 overflow-x-auto pb-8 justify-between">
           {/* Brand Colors */}

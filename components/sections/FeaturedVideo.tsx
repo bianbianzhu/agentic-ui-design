@@ -1,10 +1,13 @@
+'use client';
+
+import { useAutoScrollToCenter } from '@/hooks/useAutoScrollToCenter';
+
 export default function FeaturedVideo() {
+  const sectionRef = useAutoScrollToCenter<HTMLDivElement>({ block: 'start' });
+
   return (
-    <div className="px-[3.3vw] pb-16">
-      <div
-        className="relative w-full rounded-lg overflow-hidden"
-        style={{ paddingBottom: "56.25%", minHeight: "400px" }}
-      >
+    <div ref={sectionRef} className="px-[3.3vw] h-[calc(100vh-88px)]">
+      <div className="relative w-full h-full rounded-lg overflow-hidden">
         <iframe
           className="absolute top-0 left-0 w-full h-full"
           src="https://www.youtube.com/embed/NMmk6jk7pko?autoplay=1&mute=1&rel=0&loop=1&playlist=NMmk6jk7pko"

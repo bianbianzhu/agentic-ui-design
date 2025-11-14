@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useAutoScrollToCenter } from '@/hooks/useAutoScrollToCenter';
 
 function AnimatedSolution({
   children,
@@ -51,8 +50,6 @@ function AnimatedSolution({
 }
 
 export default function Solutions() {
-  const sectionRef = useAutoScrollToCenter();
-
   const solutions = [
     "K-12 SCHOOLS",
     "HIGHER ED",
@@ -65,7 +62,7 @@ export default function Solutions() {
   const marginClasses = ["", "ml-12", "-ml-8", "ml-10", "-ml-4", "ml-6"];
 
   return (
-    <section ref={sectionRef} className="bg-black text-white px-[3.3vw] py-24 overflow-hidden" id="solutions">
+    <section className="bg-black text-white px-[3.3vw] py-24 overflow-hidden" id="solutions">
       <div className="text-base font-normal tracking-[0.2em] mb-16 uppercase">
         SOLUTIONS
       </div>

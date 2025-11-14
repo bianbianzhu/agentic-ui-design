@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { useAutoScrollToCenter } from "@/hooks/useAutoScrollToCenter";
 
 function AnimatedCard({
   children,
@@ -45,7 +44,6 @@ function AnimatedCard({
 }
 
 export default function SuccessStories() {
-  const sectionRef = useAutoScrollToCenter();
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollStories = (direction: number) => {
@@ -118,7 +116,7 @@ export default function SuccessStories() {
   ];
 
   return (
-    <section ref={sectionRef} className="bg-black text-white px-[3.3vw] py-24 overflow-hidden" id="stories">
+    <section className="bg-black text-white px-[3.3vw] py-24 overflow-hidden" id="stories">
       <div className="max-w-[1700px] mx-auto">
         <div className="flex justify-between items-center mb-16">
           <h2 className="text-5xl font-light tracking-tight">

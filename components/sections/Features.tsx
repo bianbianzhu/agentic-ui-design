@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useAutoScrollToCenter } from "@/hooks/useAutoScrollToCenter";
 
 function AnimatedFeatureItem({
   children,
@@ -45,8 +44,6 @@ function AnimatedFeatureItem({
 }
 
 export default function Features() {
-  const sectionRef = useAutoScrollToCenter();
-
   const features = [
     {
       number: "01",
@@ -75,7 +72,7 @@ export default function Features() {
   ];
 
   return (
-    <section ref={sectionRef} className="px-[3.3vw] py-32 overflow-hidden" id="features">
+    <section className="px-[3.3vw] py-32 overflow-hidden" id="features">
       <div className="max-w-[1700px] mx-auto grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-32">
         <div className="text-[3.5rem] font-normal tracking-wide">FEATURES</div>
 
