@@ -30,7 +30,7 @@ export default function PlatformDemo() {
     const updateOffset = () => {
       if (slideRef.current) {
         const slideWidth = slideRef.current.offsetWidth;
-        const gap = 64; // 4rem = 64px
+        const gap = 44.8; // reduced by 30% from 64px
         setSlideOffset(slideWidth + gap);
       }
     };
@@ -54,13 +54,13 @@ export default function PlatformDemo() {
   };
 
   return (
-    <section className="bg-black text-white px-[3.3vw] py-32" id="demo">
-      <div className="max-w-full mx-auto grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-0 border-t border-b border-white/20 mt-32 mb-20">
-        <div className="border-r border-white/20 p-8 flex flex-col justify-between">
+    <section className="bg-black text-white px-[2.31vw] py-[5.6rem]" id="demo">
+      <div className="max-w-full mx-auto grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-0 border-t border-b border-white/20 mt-[5.6rem] mb-[3.5rem]">
+        <div className="border-r border-white/20 p-[1.4rem] flex flex-col justify-between">
           <div className="text-[3.5rem] font-normal tracking-wide leading-tight">
             PLATFORM DEMO
           </div>
-          <div className="flex items-center gap-4 mt-12 text-xl font-light">
+          <div className="flex items-center gap-[0.7rem] mt-[2.1rem] text-xl font-light">
             <span
               className="cursor-pointer hover:scale-125 transition-transform"
               onClick={() => scrollDemo(-1)}
@@ -80,10 +80,10 @@ export default function PlatformDemo() {
           </div>
         </div>
 
-        <div className="p-[3.3vw] overflow-hidden">
+        <div className="p-[2.31vw] overflow-hidden">
           <motion.div
             ref={sliderRef}
-            className="flex gap-16"
+            className="flex gap-[2.8rem]"
             animate={{
               x: slideOffset > 0 ? -currentIndex * slideOffset : 0,
             }}
@@ -97,9 +97,9 @@ export default function PlatformDemo() {
               <div
                 key={index}
                 ref={index === 0 ? slideRef : null}
-                className="min-w-[70%] shrink-0"
+                className="min-w-[77%] shrink-0"
               >
-                <div className="w-full h-[691px] rounded mb-4 overflow-hidden relative">
+                <div className="w-full h-[691px] rounded mb-[0.7rem] overflow-hidden relative">
                   <Image
                     src={slide.image}
                     alt={slide.title}
@@ -107,7 +107,7 @@ export default function PlatformDemo() {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-2xl font-light mt-4 px-2">{slide.title}</h3>
+                <h3 className="text-2xl font-light mt-[0.7rem] px-[0.35rem]">{slide.title}</h3>
               </div>
             ))}
           </motion.div>
