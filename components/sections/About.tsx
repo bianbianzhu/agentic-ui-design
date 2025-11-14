@@ -5,9 +5,9 @@ export default function About() {
         <div className="flex flex-wrap lg:flex-nowrap gap-12 mb-16 overflow-x-auto pb-8 justify-between">
           {/* Brand Colors */}
           <div className="flex gap-6 shrink-0">
-            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-blue-600 to-blue-400 shrink-0"></div>
-            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-purple-600 to-purple-400 shrink-0"></div>
-            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-black to-gray-700 shrink-0"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-blue-600/80 to-blue-400/80 shrink-0 backdrop-blur-sm border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_20px_40px_rgba(37,99,235,0.3)]"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-purple-600/80 to-purple-400/80 shrink-0 backdrop-blur-sm border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_20px_40px_rgba(147,51,234,0.3)]"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-black/80 to-gray-700/80 shrink-0 backdrop-blur-sm border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_20px_40px_rgba(0,0,0,0.5)]"></div>
           </div>
 
           {/* Resources */}
