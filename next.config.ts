@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
+  output: "export",
+  basePath: isProd ? "/agentic-ui-design" : "",
+  assetPrefix: isProd ? "/agentic-ui-design/" : "",
   images: {
     remotePatterns: [
       {
@@ -8,6 +13,7 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+    unoptimized: true,
   },
 };
 
