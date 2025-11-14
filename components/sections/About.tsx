@@ -5,26 +5,9 @@ export default function About() {
         <div className="flex flex-wrap lg:flex-nowrap gap-12 mb-16 overflow-x-auto pb-8 justify-between">
           {/* Brand Colors */}
           <div className="flex gap-6 shrink-0">
-            {/* Blue Glass Ball */}
-            <div className="relative w-[165px] h-[165px] shrink-0">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/70 via-blue-500/60 to-blue-700/80 backdrop-blur-md shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.3),inset_5px_5px_15px_rgba(255,255,255,0.2)]"></div>
-              <div className="absolute top-[20%] left-[25%] w-[40px] h-[40px] rounded-full bg-white/30 blur-xl"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[120px] h-[20px] bg-blue-600/20 rounded-full blur-2xl"></div>
-            </div>
-
-            {/* Purple Glass Ball */}
-            <div className="relative w-[165px] h-[165px] shrink-0">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-400/70 via-purple-500/60 to-purple-700/80 backdrop-blur-md shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.3),inset_5px_5px_15px_rgba(255,255,255,0.2)]"></div>
-              <div className="absolute top-[20%] left-[25%] w-[40px] h-[40px] rounded-full bg-white/30 blur-xl"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[120px] h-[20px] bg-purple-600/20 rounded-full blur-2xl"></div>
-            </div>
-
-            {/* Black Glass Ball */}
-            <div className="relative w-[165px] h-[165px] shrink-0">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-600/70 via-gray-800/60 to-black/80 backdrop-blur-md shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.5),inset_5px_5px_15px_rgba(255,255,255,0.15)]"></div>
-              <div className="absolute top-[20%] left-[25%] w-[40px] h-[40px] rounded-full bg-white/20 blur-xl"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[120px] h-[20px] bg-black/25 rounded-full blur-2xl"></div>
-            </div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-blue-600 to-blue-400 shrink-0"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-purple-600 to-purple-400 shrink-0"></div>
+            <div className="w-[165px] h-[165px] rounded-full bg-gradient-to-br from-black to-gray-700 shrink-0"></div>
           </div>
 
           {/* Resources */}
