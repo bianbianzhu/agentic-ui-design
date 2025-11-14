@@ -1,0 +1,2 @@
+:HL["/agentic-ui-design/_next/static/chunks/e67f5d53354b8fbd.css","style"]
+0:{"buildId":"FpG6Gg6obcG2ep-DZdhUq","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
