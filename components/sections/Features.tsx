@@ -1,4 +1,52 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useAutoScrollToCenter } from "@/hooks/useAutoScrollToCenter";
+
+function AnimatedFeatureItem({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true);
+          }, delay);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Features() {
+  const sectionRef = useAutoScrollToCenter();
+
   const features = [
     {
       number: "01",
@@ -27,25 +75,26 @@ export default function Features() {
   ];
 
   return (
-    <section className="px-[3.3vw] py-32" id="features">
+    <section ref={sectionRef} className="px-[3.3vw] py-32 overflow-hidden" id="features">
       <div className="max-w-[1700px] mx-auto grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-32">
         <div className="text-[3.5rem] font-normal tracking-wide">FEATURES</div>
 
         <div className="flex flex-col gap-16">
           {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`flex flex-col lg:flex-row gap-12 py-12 border-t border-gray-300 ${
-                index === features.length - 1 ? "border-b" : ""
-              }`}
-            >
-              <h3 className="text-4xl font-light max-w-[400px] shrink-0">
-                {feature.number}. {feature.title}
-              </h3>
-              <p className="text-lg leading-relaxed text-gray-700 font-light max-w-[500px]">
-                {feature.description}
-              </p>
-            </div>
+            <AnimatedFeatureItem key={index} delay={index * 60}>
+              <div
+                className={`flex flex-col lg:flex-row gap-12 py-12 border-t border-gray-300 ${
+                  index === features.length - 1 ? "border-b" : ""
+                }`}
+              >
+                <h3 className="text-4xl font-light max-w-[400px] shrink-0">
+                  {feature.number}. {feature.title}
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-700 font-light max-w-[500px]">
+                  {feature.description}
+                </p>
+              </div>
+            </AnimatedFeatureItem>
           ))}
         </div>
       </div>

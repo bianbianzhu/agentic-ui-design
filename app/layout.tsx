@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import EntryAnimation from "@/components/EntryAnimation";
 
 // Inter font - primary font for edtech design
 const inter = Inter({
@@ -42,7 +43,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} ${fontClass} antialiased`}
       >
-        {children}
+        <EntryAnimation>
+          {children}
+        </EntryAnimation>
       </body>
     </html>
   );

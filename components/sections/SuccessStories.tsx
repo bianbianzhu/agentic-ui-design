@@ -1,8 +1,51 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useAutoScrollToCenter } from "@/hooks/useAutoScrollToCenter";
+
+function AnimatedCard({
+  children,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true);
+          }, delay);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-24"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function SuccessStories() {
+  const sectionRef = useAutoScrollToCenter();
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollStories = (direction: number) => {
@@ -31,7 +74,8 @@ export default function SuccessStories() {
       type: "gradient",
       gradient: "from-purple-600 to-pink-500",
       category: "IMPACT",
-      title: "Corporate training completion rates up 45% with adaptive learning",
+      title:
+        "Corporate training completion rates up 45% with adaptive learning",
     },
     {
       type: "gradient",
@@ -62,7 +106,8 @@ export default function SuccessStories() {
       type: "gradient",
       gradient: "from-indigo-600 to-purple-700",
       category: "TESTIMONIAL",
-      title: "The AI-driven insights helped us identify struggling students early",
+      title:
+        "The AI-driven insights helped us identify struggling students early",
     },
     {
       type: "text",
@@ -73,7 +118,7 @@ export default function SuccessStories() {
   ];
 
   return (
-    <section className="bg-black text-white px-[3.3vw] py-24" id="stories">
+    <section ref={sectionRef} className="bg-black text-white px-[3.3vw] py-24 overflow-hidden" id="stories">
       <div className="max-w-[1700px] mx-auto">
         <div className="flex justify-between items-center mb-16">
           <h2 className="text-5xl font-light tracking-tight">
@@ -95,45 +140,43 @@ export default function SuccessStories() {
           </div>
         </div>
 
-        <div
-          ref={sliderRef}
-          className="overflow-x-auto scrollbar-hide mb-32"
-        >
+        <div ref={sliderRef} className="overflow-x-auto scrollbar-hide mb-32">
           <div className="flex gap-8 pb-8">
             {stories.map((story, index) => (
-              <div
-                key={index}
-                className={`w-[45%] min-w-[420px] max-w-[600px] aspect-[1/0.7] rounded-lg overflow-hidden relative cursor-pointer hover:-translate-y-3 transition-transform duration-300 ${
-                  story.type === "gradient"
-                    ? `bg-gradient-to-br ${story.gradient}`
-                    : "bg-white text-black p-12 flex flex-col justify-center"
-                }`}
-              >
-                {story.type === "gradient" ? (
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <div className="text-sm font-normal tracking-widest uppercase mb-4 opacity-80">
-                      {story.category}
+              <AnimatedCard key={index} delay={index * 60}>
+                <div
+                  className={`w-[45%] min-w-[420px] max-w-[600px] aspect-[1/0.7] rounded-lg overflow-hidden relative cursor-pointer hover:-translate-y-3 transition-transform duration-300 ${
+                    story.type === "gradient"
+                      ? `bg-gradient-to-br ${story.gradient}`
+                      : "bg-white text-black p-12 flex flex-col justify-center"
+                  }`}
+                >
+                  {story.type === "gradient" ? (
+                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                      <div className="text-sm font-normal tracking-widest uppercase mb-4 opacity-80">
+                        {story.category}
+                      </div>
+                      <h3 className="text-2xl font-normal leading-tight">
+                        {story.title}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-normal leading-tight">
-                      {story.title}
-                    </h3>
-                  </div>
-                ) : (
-                  <>
-                    <div className="text-sm font-normal tracking-widest uppercase mb-4 opacity-80">
-                      {story.category}
-                    </div>
-                    <h3 className="text-4xl font-normal leading-tight">
-                      {story.title}
-                    </h3>
-                    {story.author && (
-                      <p className="text-lg font-light mt-4 opacity-70">
-                        {story.author}
-                      </p>
-                    )}
-                  </>
-                )}
-              </div>
+                  ) : (
+                    <>
+                      <div className="text-sm font-normal tracking-widest uppercase mb-4 opacity-80">
+                        {story.category}
+                      </div>
+                      <h3 className="text-4xl font-normal leading-tight">
+                        {story.title}
+                      </h3>
+                      {story.author && (
+                        <p className="text-lg font-light mt-4 opacity-70">
+                          {story.author}
+                        </p>
+                      )}
+                    </>
+                  )}
+                </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
