@@ -53,6 +53,24 @@ export default function PlatformDemo() {
     }
   };
 
+  const handleDragEnd = (
+    _event: MouseEvent | TouchEvent | PointerEvent,
+    info: { offset: { x: number }; velocity: { x: number } }
+  ) => {
+    const threshold = 50; // minimum drag distance to trigger slide change
+    const velocity = info.velocity.x;
+    const offset = info.offset.x;
+
+    // Determine direction based on drag distance and velocity
+    if (offset > threshold || velocity > 500) {
+      // Dragged right or fast swipe right - go to previous
+      scrollDemo(-1);
+    } else if (offset < -threshold || velocity < -500) {
+      // Dragged left or fast swipe left - go to next
+      scrollDemo(1);
+    }
+  };
+
   return (
     <section className="bg-black text-white px-[3.3vw] py-32" id="demo">
       <div className="max-w-full mx-auto grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-0 border-t border-b border-white/20 mt-32 mb-20">
@@ -83,7 +101,11 @@ export default function PlatformDemo() {
         <div className="p-[3.3vw] overflow-hidden">
           <motion.div
             ref={sliderRef}
-            className="flex gap-16"
+            className="flex gap-16 cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={handleDragEnd}
             animate={{
               x: slideOffset > 0 ? -currentIndex * slideOffset : 0,
             }}
